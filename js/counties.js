@@ -27,10 +27,20 @@ const loadCountriesDetails = code =>{
     
    // https://restcountries.com/v3.1/alpha/{code}
     const url = ` https://restcountries.com/v3.1/alpha/${code}`
-    console.log('details')
     fetch(url)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => showCountryDetail(data))
+}
+
+const showCountryDetail = country =>{
+    console.log(country);
+    const detailContainer = document.getElementById('country-details');
+    detailContainer.innerHTML =`
+            <h3>Name: ${country.name}</h3>
+            <img src="${country.flags.png}"></img>
+            
+    `;
 }
 
 loadCounties();
+
